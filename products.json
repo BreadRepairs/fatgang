@@ -21,6 +21,22 @@
     "price": "€1400",
     "description": "iphone",
     "stock": true,
-    "badge": "Best"
+    "badge": "iPhone"
+  },
+  {
+    "category": "Product",
+    "name": "fatgang LIMITED TIME SHIRT",
+    "price": "€20",
+    "description": "cool shirt limited",
+    "stock": true,
+    "badge": "shirts"
+  },
+  {
+    "category": "Product",
+    "name": "fatgang phone",
+    "price": "€5",
+    "description": "cardboard phone but works :)",
+    "stock": true,
+    "badge": "cool"
   }
 ]
