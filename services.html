@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fatgang | services and products</title>
+    <style>
+      :root {
+        --bg: #060b14;
+        --panel: rgba(10, 18, 32, 0.9);
+        --panel-strong: #101a2d;
+        --text: #f4f7ff;
+        --muted: #94a7c6;
+        --accent: #2ea8ff;
+        --accent-strong: #4ce3ff;
+        --border: rgba(78, 168, 255, 0.35);
+        --success: #39d98a;
+        --danger: #ff5d73;
+        --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(46, 168, 255, 0.2), transparent 30%),
+          radial-gradient(circle at bottom right, rgba(76, 227, 255, 0.18), transparent 28%),
+          var(--bg);
+        min-height: 100vh;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent 45%);
+        pointer-events: none;
+      }
+
+      .page-shell {
+        width: min(1200px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 2rem 0 4rem;
+      }
+
+      .hero {
+        background: linear-gradient(145deg, rgba(16, 26, 45, 0.95), rgba(8, 15, 27, 0.95));
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        border-radius: 28px;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto auto -60px -60px;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(46, 168, 255, 0.25), transparent 70%);
+        filter: blur(20px);
+      }
+
+      .hero-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .brand {
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-strong);
+      }
+
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        text-decoration: none;
+        color: var(--text);
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.14);
+        padding: 0.7rem 1rem;
+        border-radius: 999px;
+        transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      }
+
+      .back-btn:hover {
+        transform: translateY(-2px);
+        background: rgba(46, 168, 255, 0.16);
+        border-color: var(--accent);
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin: 0 0 0.6rem;
+      }
+
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+        max-width: 700px;
+      }
+
+      .section-block {
+        margin-top: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        display: inline-block;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent), transparent);
+        margin-top: 0.35rem;
+      }
+
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+      }
+
+      .card {
+        background: linear-gradient(145deg, rgba(16, 26, 45, 0.95), rgba(9, 16, 29, 0.95));
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 0.95rem 1rem 1rem;
+        box-shadow: var(--shadow);
+        transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-strong);
+        box-shadow: 0 22px 55px rgba(46, 168, 255, 0.2);
+      }
+
+      .badge {
+        position: absolute;
+        top: 0.8rem;
+        right: 0.8rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.4rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+        z-index: 1;
+      }
+
+      .badge:hover {
+        transform: translateY(-2px) scale(1.03);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.32);
+        filter: brightness(1.08);
+      }
+
+      .badge.new {
+        background: linear-gradient(135deg, #1f7fff, #2ec5ff);
+        color: white;
+      }
+
+      .badge.sale {
+        background: linear-gradient(135deg, #d6394d, #ff6b6b);
+        color: white;
+      }
+
+      .badge.best-value {
+        background: linear-gradient(135deg, #d9a11f, #ffd36f);
+        color: #1b1200;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, transparent, rgba(46, 168, 255, 0.08), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.45s ease;
+      }
+
+      .card:hover::before {
+        transform: translateX(100%);
+      }
+
+      .card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        height: 100%;
+        padding-right: 3.2rem;
+        flex: 1;
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 0.6rem;
+      }
+
+      .card h3 {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .desc {
+        color: var(--muted);
+        line-height: 1.5;
+        margin: 0;
+        flex: 1;
+        padding-bottom: 0.15rem;
+        font-size: 0.95rem;
+      }
+
+      .bottom-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: auto;
+        padding-top: 0.2rem;
+        width: 100%;
+      }
+
+      .price {
+        color: var(--accent-strong);
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .stock {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-weight: 600;
+        padding: 0.4rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.92rem;
+        margin-top: 2px;
+      }
+
+      .stock.in {
+        background: rgba(57, 217, 138, 0.15);
+        color: var(--success);
+      }
+
+      .stock.out {
+        background: rgba(255, 93, 115, 0.15);
+        color: var(--danger);
+      }
+
+      .empty-state {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 280px;
+        padding: 2rem;
+        text-align: center;
+        color: var(--muted);
+        background: linear-gradient(145deg, rgba(16, 26, 45, 0.95), rgba(9, 16, 29, 0.95));
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .empty-state strong {
+        display: block;
+        color: var(--text);
+        font-size: 1.1rem;
+        margin-bottom: 0.45rem;
+      }
+
+      @media (max-width: 760px) {
+        .hero {
+          padding: 1.3rem;
+        }
+
+        .hero-top {
+          flex-direction: column;
+          align-items: start;
+        }
+
+        .cards-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .card-content {
+          padding-right: 2.6rem;
+        }
+
+        .card-header {
+          flex-direction: column;
+          align-items: start;
+        }
+
+        .bottom-row {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero">
+        <div class="hero-top">
+          <div class="brand">fat gang</div>
+          <a class="back-btn" href="index.html">← Back to Home</a>
+        </div>
+        <h1>fat gang services and products</h1>
+        <p></p>
+      </section>
+
+      <section id="catalog" class="section-block"></section>
+    </main>
+
+    <script>
+      // Fetch the catalog data from the local JSON file.
+      async function loadCatalog() {
+        const catalog = document.getElementById('catalog');
+
+        try {
+          const response = await fetch('products.json');
+          if (!response.ok) {
+            throw new Error('Unable to load catalog.');
+          }
+
+          const data = await response.json();
+
+          // Put in-stock items first
+data.sort((a, b) => {
+  return Number(b.stock) - Number(a.stock);
+});
+
+          // Show an empty-state message when the JSON file is an empty array.
+          if (!Array.isArray(data) || data.length === 0) {
+            catalog.innerHTML = `
+              <div class="empty-state">
+                <div>
+                  <strong>No services or products available yet.</strong>
+                  Please check back later!
+                </div>
+              </div>
+            `;
+            return;
+          }
+
+          // Separate services and products into their own groups.
+          const services = data.filter((item) => item.category && item.category.toLowerCase() === 'service');
+          const products = data.filter((item) => item.category && item.category.toLowerCase() === 'product');
+
+          let html = '';
+
+          if (services.length > 0) {
+            html += `
+              <div class="section-block">
+                <h2 class="section-title">Services</h2>
+                <div class="cards-grid">
+                  ${services.map(renderCard).join('')}
+                </div>
+              </div>
+            `;
+          }
+
+          if (products.length > 0) {
+            html += `
+              <div class="section-block">
+                <h2 class="section-title">Products</h2>
+                <div class="cards-grid">
+                  ${products.map(renderCard).join('')}
+                </div>
+              </div>
+            `;
+          }
+
+          catalog.innerHTML = html;
+        } catch (error) {
+          // Fallback message in case the file is missing or malformed.
+          catalog.innerHTML = `
+            <div class="empty-state">
+              <div>
+                <strong>No services or products available yet.</strong>
+                Please check back later!
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      // Build a single card for each catalog item.
+      function renderCard(item) {
+        const isInStock = Boolean(item.stock);
+        const stockLabel = isInStock ? '🟢 In Stock' : '🔴 Out of Stock';
+        const stockClass = isInStock ? 'in' : 'out';
+        const badgeMarkup = getBadgeMarkup(item);
+
+        return `
+          <article class="card">
+            ${badgeMarkup}
+            <div class="card-content">
+              <div class="card-header">
+                <h3>${escapeHtml(item.name || 'Untitled Item')}</h3>
+              </div>
+              <p class="desc">${escapeHtml(item.description || 'No description available.')}</p>
+              <div class="bottom-row">
+                <span class="price">${escapeHtml(item.price || 'Price available on request')}</span>
+                <span class="stock ${stockClass}">${stockLabel}</span>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
+      // Return badge markup for supported badge values. Empty or "no" values show nothing.
+      function getBadgeMarkup(item) {
+        const rawBadge = item && item.badge;
+        if (rawBadge === undefined || rawBadge === null) {
+          return '';
+        }
+
+        const badgeText = String(rawBadge).trim();
+        if (!badgeText || badgeText.toLowerCase() === 'no') {
+          return '';
+        }
+
+        const normalized = badgeText.toLowerCase().replace(/-/g, ' ');
+
+        if (normalized === 'new') {
+          return '<span class="badge new">new</span>';
+        }
+
+        if (normalized === 'sale') {
+          return '<span class="badge sale">sale</span>';
+        }
+
+        if (normalized === 'best value') {
+          return '<span class="badge best-value">best value</span>';
+        }
+
+        return '';
+      }
+
+      // Escape user-provided content before inserting it into the page.
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      loadCatalog();
+    </script>
+  </body>
+</html>
