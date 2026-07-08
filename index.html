@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fatgang website</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+html{
+scroll-behavior:smooth;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#09090f;
+color:white;
+overflow-x:hidden;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top,#0077ff33 0%,transparent 40%),
+radial-gradient(circle at bottom right,#00d4ff22 0%,transparent 45%);
+z-index:-1;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 10%;
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+color:#00bfff;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+transition:.3s;
+}
+
+nav a:hover{
+color:#00bfff;
+}
+
+.hero{
+min-height:90vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:65px;
+margin-bottom:15px;
+}
+
+.hero span{
+color:#00bfff;
+}
+
+.hero p{
+max-width:750px;
+font-size:20px;
+margin:auto;
+}
+
+.button{
+display:inline-block;
+margin-top:35px;
+padding:15px 35px;
+background:#00bfff;
+color:white;
+text-decoration:none;
+border-radius:40px;
+transition:.3s;
+font-weight:600;
+}
+
+.button:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #00bfff;
+}
+
+section{
+padding:90px 10%;
+}
+
+.title{
+font-size:42px;
+text-align:center;
+margin-bottom:45px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:#14141d;
+padding:30px;
+border-radius:15px;
+border:1px solid #222;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:#00bfff;
+box-shadow:0 0 20px #00bfff44;
+}
+
+.card h2{
+color:#00bfff;
+margin-bottom:15px;
+}
+
+.services-section{
+opacity:0;
+transform:translateY(30px);
+transition:opacity .7s ease, transform .7s ease;
+}
+
+.services-section.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+.services-cta-wrap{
+margin-top:35px;
+display:flex;
+justify-content:center;
+}
+
+.services-cta{
+display:inline-block;
+padding:18px 42px;
+background:#00bfff;
+color:white;
+text-decoration:none;
+border-radius:40px;
+transition:.3s;
+font-weight:700;
+box-shadow:0 0 20px #00bfff44;
+}
+
+.services-cta:hover{
+transform:scale(1.05);
+box-shadow:0 0 24px #00bfff;
+}
+
+.contact-box{
+max-width:700px;
+margin:auto;
+padding:35px;
+background:#14141d;
+border-radius:15px;
+border:1px solid #222;
+text-align:center;
+}
+
+.contact-box p{
+margin:15px 0;
+font-size:20px;
+}
+
+.contact-box a{
+color:#00bfff;
+text-decoration:none;
+}
+
+footer{
+padding:35px;
+text-align:center;
+opacity:.8;
+}
+
+.license-button{
+display:inline-block;
+margin-top:20px;
+padding:12px 30px;
+background:#222;
+color:white;
+text-decoration:none;
+border-radius:30px;
+transition:.3s;
+}
+
+.license-button:hover{
+background:#00bfff;
+box-shadow:0 0 15px #00bfff;
+}
+
+@media(max-width:700px){
+
+.hero h1{
+font-size:45px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">fatgang</div>
+
+<div>
+<a href="#hero">home</a>
+<a href="#services">services</a>
+<a href="#contact">contact</a>
+</div>
+
+</nav>
+
+<section class="hero" id="hero">
+
+<div>
+
+<h1><span>BREAD</span><br>Computer Repair</h1>
+
+<p>
+pro procuts for pepole in human history
+</p>
+
+<a class="button" href="#contact">Contact Us</a>
+
+</div>
+
+</section>
+
+<section id="services" class="services-section">
+
+<h1 class="title">Services</h1>
+
+<div class="cards">
+
+<div class="card">
+<h2>💻 Computer Repair</h2>
+<p>if you want computer repair go to bread.</p>
+</div>
+
+<div class="card">
+<h2>pro prudcts</h2></h2>
+<p>cool phones</p>
+</div>
+
+<div class="card">
+<h2>idk something else</h2>
+<p>idk go buy a phone</p></p>
+</div>
+
+<div class="services-cta-wrap">
+<a class="services-cta" href="services.html">📦 View Full Products & Services</a>
+</div>
+
+</section>
+
+<section id="contact">
+
+<h1 class="title">Contact</h1>
+
+<div class="contact-box">
+
+<p>
+📧
+<a href="mailto:kappe4@outlook.com">
+kappe4@outlook.com
+</a>
+</p>
+
+<p>
+📞
+<a href="tel:+358452526961">
++358 45 252 6961
+</a>
+</p>
+
+<p>
+always dont remember, you can contact us anytime by email or phone.
+</p>
+
+<a class="license-button" href="License.html">
+📄 License
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 fatgang, Bread Repairs
+
+</footer>
+
+<script>
+const servicesSection = document.querySelector('.services-section');
+
+if (servicesSection) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        servicesSection.classList.add('visible');
+        observer.unobserve(servicesSection);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  observer.observe(servicesSection);
+}
+</script>
+
+</body>
+</html>
