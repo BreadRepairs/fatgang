@@ -1,0 +1,26 @@
+[
+  {
+    "category": "Service",
+    "name": "just go to bread",
+    "price": "€5",
+    "description": "we dont have anything here for you like services",
+    "stock": false,
+    "badge": "no"
+  },
+  {
+    "category": "Product",
+    "name": "Samsung Galaxy S26 Ultra 256gb",
+    "price": "€1299",
+    "description": "col pone",
+    "stock": true,
+    "badge": "cool"
+  },
+  {
+    "category": "Product",
+    "name": "iPhone 17 Pro Max 256 Gt 5G",
+    "price": "€1400",
+    "description": "iphone",
+    "stock": true,
+    "badge": "Best"
+  }
+]
